@@ -3,16 +3,16 @@
 <div class="center">
 <form #userForm="ngForm" (ngSubmit)="submitProfile()">
     <div  class="form-group">
-        <label for="email"></label>
         <input [(ngModel)]="profile.email" type="text" id="email"  name="email" placeholder="Email" class="form-control" required email>
     </div>
+
     <div class="form-group">
         <label for="name"></label>
         <input [(ngModel)]="profile.name"  type="text" id="name" name="name" placeholder="Name" class="form-control" required>
     </div>
     <div class="form-group">
         <label for="bio"></label>
-        <textarea [(ngModel)]="profile.bio"  rows="4" cols="50" id="bio" name="bio" placeholder="Bio" class="form-control"></textarea>
+        <textarea [(ngModel)]="profile.bio"  rows="4" cols="50" id="bio" name="bio" placeholder="Bio..." class="form-control"></textarea>
     </div>
     <div class="form-group">
         <label for="active"></label>
