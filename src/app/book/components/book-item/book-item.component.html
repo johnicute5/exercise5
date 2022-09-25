@@ -1,1 +1,13 @@
-<p>book-item works!</p>
+<div class="container">
+    <b>Book item</b>
+    <div class="list">
+      <ul>
+        <li> <b>ID:  </b> {{myArrayOfBooks?.id}}</li>
+        <li> <b>Name:   </b> {{myArrayOfBooks?.name}}</li>
+        <li> <b>Author/s:   </b> {{myArrayOfBooks?.author}}</li>
+        <li> <b>ISBN:  </b> {{myArrayOfBooks?.isbn}}</li>
+      </ul>
+    </div>
+    <button class="btn" (click)="sendEdit()">Edit</button>
+    <button class="btn" (click)="sendDelete()">Delete</button>
+</div>

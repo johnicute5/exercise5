@@ -1,23 +1,30 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogItemComponent } from './blog/components/blog-item/blog-item.component';
-import { BookItemComponent } from './book/components/book-item/book-item.component';
+import { AppComponent } from './app.component';
+import { BlogListComponent } from './blog/pages/blog-list/blog-list.component';
+import { BookListComponent } from './book/pages/book-list/book-list.component';
+import { ProfileComponent } from './user/pages/profile/profile.component';
 
 const routes: Routes = [
-  { path: "",
-  redirectTo: "blog-item",
-  pathMatch: "full"
-},
 
-{
-  path: "blog-item",
-  component: BlogItemComponent
-},
+  {
+    path: 'book',
+    component: BookListComponent,
+    loadChildren: () => import('./book/book.module').then(m =>m.BookModule)
+  },
 
-{
-  path: "book-item",
-  component: BookItemComponent
-}
+  {
+    path: 'blog',
+    component: BlogListComponent,
+    loadChildren: () => import('./blog/blog.module').then(m =>m.BlogModule)
+  },
+
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    loadChildren: () => import('./user/user.module').then(m =>m.UserModule)
+  }
+
 ];
 
 @NgModule({

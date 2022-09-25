@@ -1,1 +1,8 @@
-<p>book-list works!</p>
+<div class="header">Book List</div>
+
+<div class="item" *ngFor="let books of arrayOfBooks">
+  <app-book-item [myArrayOfBooks]="books"
+    (editBookEmitter)="editBook($event)"
+    (deleteBookEmitter)="deleteBook($event)">
+  </app-book-item>
+</div>

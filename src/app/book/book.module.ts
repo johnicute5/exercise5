@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BookListComponent } from './pages/book-list/book-list.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 
-
-
 @NgModule({
   declarations: [
     BookListComponent,
@@ -14,4 +12,5 @@ import { BookItemComponent } from './components/book-item/book-item.component';
     CommonModule
   ]
 })
+
 export class BookModule { }

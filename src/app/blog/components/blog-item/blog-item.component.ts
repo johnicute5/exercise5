@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Blog } from '../../models/blog';
 
 @Component({
   selector: 'app-blog-item',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogItemComponent implements OnInit {
 
+  @Input() arrayOfBlogs: Blog | undefined;
+  @Output() editIdEmitter = new EventEmitter();
+  @Output() deleteIdEmitter = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sendEditBlog(){
+    this.editIdEmitter.emit(this.arrayOfBlogs?.id)
+  }
+
+  sendDeleteBlog(){
+    this.deleteIdEmitter.emit(this.arrayOfBlogs?.id)
   }
 
 }

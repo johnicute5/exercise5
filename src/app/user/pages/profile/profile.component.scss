@@ -1,0 +1,41 @@
+.header{
+    text-align: center;
+    padding: 15px;
+    height: auto;
+    width: auto;
+    font-size: x-large;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #5e503f;
+}
+
+.center{
+    text-align: center;
+    margin: 0 auto 0 auto;
+    max-width: 500px;
+    padding: 10px;
+}
+.form-control{
+  background-color: #fffbf6;
+}
+
+
+.btn{
+    color: black;
+    margin: 10px;
+    background-color: #c6ac8f;
+    width: 100px;
+    border-radius:10px;
+
+}
+.btn:hover{
+  color:white;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 7px solid rgb(8, 84, 8);
+}
+
+.ng-invalid[required], .ng-invalid.required {
+    border-left: 7px solid rgb(135, 4, 4);
+}

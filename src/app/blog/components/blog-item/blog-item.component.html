@@ -1,1 +1,14 @@
-<p>blog-item works!</p>
+<div class="container">
+    <b>Blog item</b>
+    <div class="list">
+      <ul>
+        <li> <b>ID:  </b> {{arrayOfBlogs?.id}}</li>
+        <li> <b>Title:   </b> {{arrayOfBlogs?.title}}</li>
+        <li> <b>Author:  </b> {{arrayOfBlogs?.author}}</li>
+        <li> <b>Comment/s: </b> {{arrayOfBlogs?.comments}}</li>
+      </ul>
+
+    </div>
+    <button class="btn" (click)="sendEditBlog()">Edit</button>
+    <button class="btn" (click)="sendDeleteBlog()">Delete</button>
+</div>

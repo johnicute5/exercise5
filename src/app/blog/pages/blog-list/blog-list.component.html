@@ -1,1 +1,6 @@
-<p>blog-list works!</p>
+<div class="header">Blog List</div>
+<div class="item" *ngFor="let blogs of myArrayofBlogs">
+    <app-blog-item [arrayOfBlogs]="blogs"
+        (editIdEmitter)="editBlog($event)"
+        (deleteIdEmitter)="deleteBlog($event)"></app-blog-item>
+</div>

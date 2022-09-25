@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { FormComponent } from './components/form/form.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +10,9 @@ import { FormComponent } from './components/form/form.component';
     FormComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    FormsModule
+  ],
+  bootstrap: [ProfileComponent]
 })
-export class UsersModule { }
+export class UserModule { }
