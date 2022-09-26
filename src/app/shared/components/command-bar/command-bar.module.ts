@@ -5,13 +5,16 @@ import { CommandBarComponent } from './command-bar.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CommandBarComponent
+  ],
   imports: [
     CommonModule,
-    CommandBarComponent
+
   ],
   exports:  [
     CommandBarComponent
+
   ]
 })
 export class CommandBarModule { }

@@ -7,18 +7,18 @@ import { ProfileComponent } from './user/pages/profile/profile.component';
 
 const routes: Routes = [
 
+
+
+  {
+    path: '',
+    component: BlogListComponent,
+    loadChildren: () => import('./blog/blog.module').then(m =>m.BlogModule)
+  },
   {
     path: 'book',
     component: BookListComponent,
     loadChildren: () => import('./book/book.module').then(m =>m.BookModule)
   },
-
-  {
-    path: 'blog',
-    component: BlogListComponent,
-    loadChildren: () => import('./blog/blog.module').then(m =>m.BlogModule)
-  },
-
   {
     path: 'profile',
     component: ProfileComponent,
