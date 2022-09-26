@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CommandBarComponent } from './command-bar.component';
 
 describe('CommandBarComponent', () => {
