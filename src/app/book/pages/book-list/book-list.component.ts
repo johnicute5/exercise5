@@ -24,5 +24,6 @@ export class BookListComponent implements OnInit {
 
   deleteBook(id:number){
     alert(`Delete: ${id}`);
+    console.log(`Delete: ${id}`);
   }
 }
