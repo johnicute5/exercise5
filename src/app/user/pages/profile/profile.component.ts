@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { User } from '../../models/user';
 
 @Component({
@@ -8,20 +9,24 @@ import { User } from '../../models/user';
 })
 export class ProfileComponent implements OnInit {
 
-  profile: User = {
-      email: '',
-      name: '',
-      bio: '',
-      active: ''
-  }
+  profile:FormGroup;
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.profile = fb.group({
+      email: [''],
+      name: [''],
+      bio: [''],
+      active: [false]
+    }
+
+    )
+  }
 
   ngOnInit(): void {
   }
 
   submitProfile() {
-    console.log(this.profile);
+    console.log(this.profile.value)
   }
 
 }

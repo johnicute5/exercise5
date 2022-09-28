@@ -16,46 +16,54 @@ import {
 
 })
 export class BlogFormComponent implements OnInit {
-  title = "Blog"
+  title = "Add Blog Form"
   blogForm: FormGroup
   ff: FormArray
 
   constructor(fb: FormBuilder) {
     this.blogForm = fb.group({
-      name: ['', [Validators.minLength(1), Validators.maxLength(7)]],
-      addNewAuthor: fb.array([]),
-      isbn: [''],
+      title: ['', [Validators.minLength(2)]],
+      description: ['',[Validators.minLength(20)]],
+      author:['',[Validators.minLength(2)]],
+      addNewComment: fb.array([]),
+
     });
-    this.ff = this.blogForm.get('addNewAuthor') as FormArray;
+    this.ff = this.blogForm.get('addNewComment') as FormArray;
   }
   ngAfterViewInit(): void {}
   ngOnInit(): void {
     this.blogForm.valueChanges.subscribe((data) => {
-      console.log(data);
+
     });
   }
-  submitBook() {
-    console.log(this.blogForm.get('name')?.errors);
+  submitBlog() {
+    alert(`Blog Succesfuly Save!`);
+    console.log(this.blogForm.get('title')?.errors);
+    console.log(this.blogForm.value)
+
   }
   reset() {
     this.blogForm.reset();
   }
   markNickName() {
-    this.blogForm.get('name')?.setValue('Ibong Adarna');
+    this.blogForm.get('title')?.setValue('Blogger Tips 101');
   }
-  addAuthor() {
-    (this.blogForm.get('addNewAuthor') as FormArray).push(
+  addComment() {
+    (this.blogForm.get('addNewComment') as FormArray).push(
       new FormControl()
     );
   }
-  deleteAuthor(id: number) {
+  deleteComment(id: number) {
     this.ff.removeAt(id);
   }
-  get name() {
-    return this.blogForm.get('name') as FormControl;
+  get titles() {
+    return this.blogForm.get('title') as FormControl;
   }
-  get isbn() {
-    return this.blogForm.get('name') as FormControl;
+  get description() {
+    return this.blogForm.get('description') as FormControl;
+  }
+  get author() {
+    return this.blogForm.get('author') as FormControl;
   }
 }
 

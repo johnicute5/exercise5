@@ -1,14 +1,32 @@
 .center{
-  text-align: center;
+  text-align: left;
   margin: 0 auto 0 auto;
+  font-size: 18px;
+  font-weight: 500;
   max-width: 500px;
   padding: 10px;
+  color: #5e503f;
 }
+.center2{
+  text-align: center;
+
+}
+
 .form-control{
 background-color: #fffbf6;
 }
-
-
+.header{
+  text-align: center;
+}
+b{
+  padding: 15px;
+  height: auto;
+  width: auto;
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #5e503f;
+}
 .btn{
   color: black;
   margin: 10px;
@@ -21,9 +39,17 @@ background-color: #fffbf6;
 .btn:hover{
 color:white;
 }
-
+p{
+  text-align: left;
+}
+.alert{
+  height:40px;
+  font-size: small;
+  text-align: center;
+  padding: 10px;
+}
 .ng-valid[required], .ng-valid.required {
-  border-left: 7px solid rgb(8, 84, 8);
+  border-left: 7px solid rgb(5, 105, 5);
 }
 
 .ng-invalid[required], .ng-invalid.required {

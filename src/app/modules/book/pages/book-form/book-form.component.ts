@@ -16,15 +16,15 @@ import {
 
 })
 export class BookFormComponent implements OnInit {
-  title = "books"
+  title = "Add Book Form"
   bookForm: FormGroup
   ff: FormArray
 
   constructor(fb: FormBuilder) {
     this.bookForm = fb.group({
-      name: ['', [Validators.minLength(1), Validators.maxLength(7)]],
+      name: ['', [Validators.minLength(2)]],
       addNewAuthor: fb.array([]),
-      isbn: [''],
+      isbn: ['',[Validators.minLength(2)]],
     });
     this.ff = this.bookForm.get('addNewAuthor') as FormArray;
   }
@@ -35,7 +35,10 @@ export class BookFormComponent implements OnInit {
     });
   }
   submitBook() {
+    alert(`Book Succesfuly Save!`);
     console.log(this.bookForm.get('name')?.errors);
+    console.log(this.bookForm.value)
+
   }
   reset() {
     this.bookForm.reset();
@@ -55,6 +58,6 @@ export class BookFormComponent implements OnInit {
     return this.bookForm.get('name') as FormControl;
   }
   get isbn() {
-    return this.bookForm.get('name') as FormControl;
+    return this.bookForm.get('isbn') as FormControl;
   }
 }

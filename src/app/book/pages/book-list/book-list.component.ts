@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../services/book.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -11,18 +12,19 @@ export class BookListComponent implements OnInit {
 
   arrayOfBooks?:Book[] = [];
 
-  constructor(private myBookServices:BookService) { }
+  constructor(private myBookServices:BookService,private router:Router) { }
 
   ngOnInit(): void {
     this.arrayOfBooks = this.myBookServices.showBooks();
   }
   editBook(id:number){
-    alert(`Edit: ${id}`);
+    alert(`Do you want to edit ${id}?`);
     console.log(`Edit: ${id}`);
+    this.router.navigate(['form/books'])
   }
 
   deleteBook(id:number){
-    alert(`Delete: ${id}`);
+    alert(`Dou you want to delete: ${id}?`);
     console.log(`Delete: ${id}`);
   }
   addToBookList(){

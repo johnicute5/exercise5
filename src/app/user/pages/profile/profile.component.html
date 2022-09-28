@@ -1,28 +1,38 @@
 <div class="header">Profile Page</div>
 
 <div class="center">
-<form #userForm="ngForm" (ngSubmit)="submitProfile()">
-    <div  class="form-group">
-        <input [(ngModel)]="profile.email" type="text" id="email"  name="email" placeholder="Email" class="form-control" required email>
-    </div>
+    <form [formGroup]="profile" (ngSubmit)="submitProfile()">
+        <div class="alert alert-danger">
+            Please fill in required fields.
+        </div>
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="text" id="email" formControlName="email" placeholder="Email"
+                class="form-control" required email>
+        </div>
+        <div class="form-group">
+            <label for="name"></label>
+            <input  type="text" id="name" formControlName="name" placeholder="Name" class="form-control"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="bio"></label>
+            <textarea  rows="4" cols="50" id="bio" formControlName="bio" placeholder="Bio"
+                class="form-control"></textarea>
+        </div><br>
+        <div class="form-group">
+            <label for="active"></label>
+            <mat-slide-toggle  id="active" formControlName="active" placeholder="Active" class="toggle" color="primary">Active
+            </mat-slide-toggle>
+        </div>
 
-    <div class="form-group">
-        <label for="name"></label>
-        <input [(ngModel)]="profile.name"  type="text" id="name" name="name" placeholder="Name" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="bio"></label>
-        <textarea [(ngModel)]="profile.bio"  rows="4" cols="50" id="bio" name="bio" placeholder="Bio..." class="form-control"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="active"></label>
-        <input [(ngModel)]="profile.active" type="text" id="active" name="active" placeholder="Active" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <button type="submit" [disabled]="userForm.invalid" class="btn">Submit</button>
-    </div>
-    <div [hidden]="userForm.valid" class="alert alert-danger">
-        Please fill in required fields.
-    </div>
-</form>
+        <div class="form-group">
+            <label for="active"></label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" [disabled]="profile.invalid"  class="btn">Submit</button>
+        </div>
+
+    </form>
 </div>

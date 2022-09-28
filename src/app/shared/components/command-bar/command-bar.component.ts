@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Blog } from 'src/app/blog/models/blog';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-command-bar',
@@ -7,20 +7,25 @@ import { Blog } from 'src/app/blog/models/blog';
   styleUrls: ['./command-bar.component.scss']
 })
 export class CommandBarComponent implements OnInit {
-  title = "blogs";
-  @Input() blogs:Blog | undefined;
   @Output() addEmitter = new EventEmitter();
   @Output() deleteAllEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
   add(){
-    this.addEmitter.emit(this.blogs)
-    console.log("im cutecute")
+    this.addEmitter.emit(this.route.snapshot.params)
+    if (this.router.url.includes('book')) {
+      this.router.navigate(['form/books'])
+    } else if (this.router.url.includes('blog')) {
+      this.router.navigate(['form/blogs'])
+    }
   }
   deleteAll(){
-    this.deleteAllEmitter.emit(this.blogs)
+    alert("Do you want to delte all?")
+    this.deleteAllEmitter.emit(this.route.snapshot.params)
+    console.log("Deleted All")
+    alert("All Data Deletad!")
   }
 }
