@@ -1,0 +1,31 @@
+.center{
+  text-align: center;
+  margin: 0 auto 0 auto;
+  max-width: 500px;
+  padding: 10px;
+}
+.form-control{
+background-color: #fffbf6;
+}
+
+
+.btn{
+  color: black;
+  margin: 10px;
+  height: auto;
+  background-color: #c6ac8f;
+  width: 150px;
+  border-radius:10px;
+
+}
+.btn:hover{
+color:white;
+}
+
+.ng-valid[required], .ng-valid.required {
+  border-left: 7px solid rgb(8, 84, 8);
+}
+
+.ng-invalid[required], .ng-invalid.required {
+  border-left: 7px solid rgb(135, 4, 4);
+}

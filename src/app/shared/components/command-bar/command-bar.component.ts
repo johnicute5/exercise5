@@ -7,6 +7,7 @@ import { Blog } from 'src/app/blog/models/blog';
   styleUrls: ['./command-bar.component.scss']
 })
 export class CommandBarComponent implements OnInit {
+  title = "blogs";
   @Input() blogs:Blog | undefined;
   @Output() addEmitter = new EventEmitter();
   @Output() deleteAllEmitter = new EventEmitter();
@@ -17,7 +18,7 @@ export class CommandBarComponent implements OnInit {
   }
   add(){
     this.addEmitter.emit(this.blogs)
-
+    console.log("im cutecute")
   }
   deleteAll(){
     this.deleteAllEmitter.emit(this.blogs)

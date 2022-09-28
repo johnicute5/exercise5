@@ -7,13 +7,6 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-list.component.scss'],
   providers: [BookService]
 })
-
-  // @Component({
-  //   selector: 'app-command-bar',
-  //   templateUrl: './command-bar.component.html',
-  //   styleUrls: ['./command-bar.component.scss'],
-  //   providers: [CommandBarComponent]
-  // })
 export class BookListComponent implements OnInit {
 
   arrayOfBooks?:Book[] = [];

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CommandBarComponent } from './command-bar.component';
 
+import { CommandBarRoutingModule } from './command-bar-routing.module';
+import { CommandBarComponent } from './command-bar.component';
 
 
 @NgModule({
@@ -10,11 +11,10 @@ import { CommandBarComponent } from './command-bar.component';
   ],
   imports: [
     CommonModule,
-
+    CommandBarRoutingModule
   ],
-  exports:  [
+  exports:[
     CommandBarComponent
-
   ]
 })
 export class CommandBarModule { }
