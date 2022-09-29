@@ -5,58 +5,64 @@ import {
   FormArray,
   FormControl,
   Validators,
-  ReactiveFormsModule
 } from '@angular/forms';
-
+import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
+import { Book } from 'src/app/book/models/book';
+import { BookService } from 'src/app/book/services/book.service';
 
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.scss'],
-
 })
 export class BookFormComponent implements OnInit {
-  title = "Add Book Form"
-  bookForm: FormGroup
-  ff: FormArray
+  [x: string]: any;
+  bookForm: FormGroup<any>;
+  ff: FormArray;
+  title = "Book Form"
 
-  constructor(fb: FormBuilder) {
+  bookID: string | null | any;
+  constructor(private bookService:BookService ,
+    fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.bookID = this.route.snapshot.paramMap.get('id');
+    let book = (this.bookService.getBook(Number(this.bookID)))
     this.bookForm = fb.group({
-      name: ['', [Validators.minLength(2)]],
-      addNewAuthor: fb.array([]),
-      isbn: ['',[Validators.minLength(2)]],
+      name: [book?.name, [Validators.required]],
+      addNewAuthor: fb.array([book?.author]) ,
+      isbn: [book?.isbn, [Validators.required]],
     });
     this.ff = this.bookForm.get('addNewAuthor') as FormArray;
   }
-  ngAfterViewInit(): void {}
-  ngOnInit(): void {
-    this.bookForm.valueChanges.subscribe((data) => {
-      console.log(data);
-    });
-  }
-  submitBook() {
-    alert(`Book Succesfuly Save!`);
-    console.log(this.bookForm.get('name')?.errors);
-    console.log(this.bookForm.value)
 
+  ngOnInit(): void {
   }
+
+  submitBook() {
+    alert("Book succesfuly saved!");
+    console.log(this.bookForm.get('name')?.errors);
+    console.log(this.bookForm.value);
+    window.location.href = "/book";
+  }
+
   reset() {
     this.bookForm.reset();
   }
-  markNickName() {
-    this.bookForm.get('name')?.setValue('Ibong Adarna');
-  }
+
   addAuthor() {
-    (this.bookForm.get('addNewAuthor') as FormArray).push(
-      new FormControl()
-    );
+    (this.bookForm.get('addNewAuthor') as FormArray).push(new FormControl());
   }
+
   deleteAuthor(id: number) {
     this.ff.removeAt(id);
   }
+
   get name() {
     return this.bookForm.get('name') as FormControl;
   }
+
   get isbn() {
     return this.bookForm.get('isbn') as FormControl;
   }

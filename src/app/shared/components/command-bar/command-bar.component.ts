@@ -23,9 +23,8 @@ export class CommandBarComponent implements OnInit {
     }
   }
   deleteAll(){
-    alert("Do you want to delte all?")
     this.deleteAllEmitter.emit(this.route.snapshot.params)
-    console.log("Deleted All")
-    alert("All Data Deletad!")
+    alert("Do you want to delte all?")
+    console.log(this.route.snapshot.params)
   }
 }

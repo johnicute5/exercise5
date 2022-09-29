@@ -1,5 +1,6 @@
 
-<div class="header"><b>{{title.toUpperCase()}}</b> </div>
+<div class="header"><b *ngIf="isAddMode">Add {{title.toUpperCase()}}</b> </div>
+<div class="header"><b *ngIf="!isAddMode">Edit {{title.toUpperCase()}}</b> </div>
 <div class="center">
 <form [formGroup]="blogForm">
   <div class="form-group">
@@ -33,7 +34,7 @@
     <button class="btn btn-info" (click)="addComment()">Add Comment</button>
   </ng-container>
 </div>
-
+<button type="submit" (click)="reset()"  class="btn btn-success">Clear Form</button>
   <button type="submit" (click)="submitBlog()" [disabled]="blogForm.invalid" class="btn btn-success">Submit</button>
   <!-- <button type="button"  class="btn btn-info" (click)="reset()">Reset</button>
   <button type="button"  class="btn btn-info" (click)="markNickName()">Reset Nickname</button> -->

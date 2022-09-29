@@ -17,22 +17,6 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.arrayOfBooks = this.myBookServices.showBooks();
   }
-  editBook(id:number){
-    alert(`Do you want to edit ${id}?`);
-    console.log(`Edit: ${id}`);
-    this.router.navigate(['form/books'])
-  }
 
-  deleteBook(id:number){
-    alert(`Dou you want to delete: ${id}?`);
-    console.log(`Delete: ${id}`);
-  }
-  addToBookList(){
-    alert(`add book:`);
-
-  }
-  deleteAll(arrayofbooks:Book[]){
-    alert(`Delete All?: : ${arrayofbooks}`);
-  }
 }
 

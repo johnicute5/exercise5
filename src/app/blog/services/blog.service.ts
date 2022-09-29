@@ -6,6 +6,7 @@ import { Blog } from '../models/blog';
 })
 export class BlogService {
 
+
   ArrayOfBlogs:Blog[] = [
     {
       id: 101691,
@@ -36,5 +37,12 @@ export class BlogService {
 
   showBlogs(){
     return this.ArrayOfBlogs;
+  }
+  getById(id:any){
+    return id;
+  }
+  update(id:any,myblogs:Blog){
+    return id && myblogs;
+
   }
 }

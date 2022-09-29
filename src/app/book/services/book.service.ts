@@ -31,11 +31,12 @@ export class BookService {
     }
 
   ];
-
   constructor() { }
-
   showBooks() {
     return this.arrayOfBooks;
   }
+  getBook(id:number):Book|any{
+    return this.arrayOfBooks.find(book =>book.id === id);
 
+  }
 }

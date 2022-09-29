@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from '../../models/book';
 
 @Component({
@@ -12,17 +13,22 @@ export class BookItemComponent implements OnInit {
   @Output() editBookEmitter = new EventEmitter();
   @Output() deleteBookEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   sendEdit(){
+    this.router.navigate(['form/blogs'])
     this.editBookEmitter.emit(this.myArrayOfBooks?.id);
+    console.log("Edit Book: " + this.myArrayOfBooks?.id)
+
   }
 
   sendDelete(){
-    this.deleteBookEmitter.emit(this.myArrayOfBooks?.id);
+    console.log("Delete Book: " + this.myArrayOfBooks?.id)
+    this.deleteBookEmitter.emit(this.myArrayOfBooks?.id)
+    this.router.navigate(['book/form'])
   }
 
 }

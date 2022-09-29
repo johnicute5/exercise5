@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Blog } from '../../models/blog';
 
 @Component({
@@ -8,8 +8,8 @@ import { Blog } from '../../models/blog';
 })
 export class BlogItemComponent implements OnInit {
 
-  @Input() arrayOfBlogs: Blog | undefined;
-  @Output() editIdEmitter = new EventEmitter();
+  @Input() arrayOfBlogs: Blog|any;
+  @Output() editIdEmitter = new EventEmitter<Blog>();
   @Output() deleteIdEmitter = new EventEmitter();
 
   constructor() { }
@@ -20,6 +20,7 @@ export class BlogItemComponent implements OnInit {
   sendEditBlog(){
     this.editIdEmitter.emit(this.arrayOfBlogs?.id)
   }
+
 
   sendDeleteBlog(){
     this.deleteIdEmitter.emit(this.arrayOfBlogs?.id)

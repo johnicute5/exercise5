@@ -3,29 +3,33 @@
 <form [formGroup]="bookForm">
   <div class="form-group">
     <label for="name">Book Name</label>
-    <input formControlName="name" placeholder="BookName" type="text" id="name" class="form-control" required>
+    <input  formControlName="name" placeholder="BookName" type="text" id="name" class="form-control" required>
     <div *ngIf="name?.errors?.['minlength']" class="alert alert-danger">Minimum Length: 2</div>
     <div *ngIf="name?.errors?.['required']" class="alert alert-danger">name is required</div>
-    <label for="addNewAuthor">Authors</label>
+    <label for="addNewAuthor" >Authors</label>
     <br/>
     <div class="center2">
     <ng-container formArrayName="addNewAuthor">
       <div *ngFor="let _ of ff.controls; index as i" class="input-group mb-3">
-        <input [formControlName]="i" class="form-control" placeholder="author">
+        <input [formControlName]="i" class="form-control" placeholder= "Author #{{i+1}}"  required>
+        <div>
         <button type="button" class="btn btn-danger" (click)="deleteAuthor(i)">Delete</button>
       </div>
+      </div>
+
       <button class = "btn" (click)="addAuthor()">Add New Author</button>
+
     </ng-container>
   </div>
   </div>
   <div class="form-group">
     <label for="isbn">ISBN</label>
     <input formControlName="isbn" placeholder="isbn..." type="text" id="isbn" class="form-control" required>
-    <div *ngIf="isbn.errors?.['minlength']" class="alert alert-danger">Minimum Length: 2</div>
+    <div *ngIf="isbn?.errors?.['minlength']" class="alert alert-danger">Minimum Length: 2</div>
     <div *ngIf="isbn?.errors?.['required']" class="alert alert-danger">isbn is required</div>
   </div>
 <div class="center2">
-  <button type="submit" (click)="submitBook()" [disabled]="bookForm.invalid" class="btn btn-success">Submit</button>
+  <button type="submit" (click)="submitBook()"  [disabled]="bookForm.invalid" class="btn btn-success">Submit</button>
   <!-- <button type="button"  class="btn btn-info" (click)="reset()">Reset</button>
   <button type="button"  class="btn btn-info" (click)="markNickName()">Reset Nickname</button> -->
 </div>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogFormComponent } from 'src/app/modules/blog/pages/blog-form/blog-form.component';
 import { BookFormComponent } from 'src/app/modules/book/pages/book-form/book-form.component';
-import { CommandBarComponent } from './components/command-bar/command-bar.component';
 
 const routes: Routes = [
   { path: 'blogs', component: BlogFormComponent },
