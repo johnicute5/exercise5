@@ -6,8 +6,21 @@ button {
   border-radius: inherit;
   height: auto;
 }
-
-.centerdiv {
-  text-align: center;
+.spacer{
+  flex: 1 1 auto;
 }
-
+a{
+  color: rgb(238, 236, 231);
+  font-size:25px;
+  margin: 5px;
+  font-weight: 500;
+}
+span{
+  color: rgb(238, 236, 231);
+  font-size:25px;
+  margin: 5px;
+  font-weight: 500;
+}
+.fixed{
+  background-color: #72593b;
+}
