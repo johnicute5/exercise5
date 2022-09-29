@@ -1,57 +1,46 @@
-.center{
-  text-align: left;
-  margin: 0 auto 0 auto;
-  font-size: 18px;
-  font-weight: 500;
-  max-width: 500px;
-  padding: 10px;
-  color: #5e503f;
-}
-.center2{
-  text-align: center;
 
-}
 
-.form-control{
-background-color: #fffbf6;
-}
-.header{
-  text-align: center;
-}
-b{
-  padding: 15px;
-  height: auto;
-  width: auto;
-  font-size: x-large;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #5e503f;
-}
 .btn{
-  color: black;
-  margin: 10px;
-  height: auto;
-  background-color: #c6ac8f;
-  width: 150px;
-  border-radius:10px;
-
-}
-.btn:hover{
-color:white;
-}
-p{
-  text-align: left;
-}
-.alert{
-  height:40px;
-  font-size: small;
   text-align: center;
-  padding: 10px;
-}
+    color: black;
+    margin: 10px;
+    background-color: #c6ac8f;
+    width: 150px;
+    border-radius:10px;
+  }
+
 .ng-valid[required], .ng-valid.required {
-  border-left: 7px solid rgb(5, 105, 5);
+  border-left: 7px solid  rgb(8, 84, 8);
 }
 
 .ng-invalid[required], .ng-invalid.required {
   border-left: 7px solid rgb(135, 4, 4);
+}
+
+.header {
+  color: #5e503f;
+  font-size: 25px;
+  font-weight: 800;
+  margin: 15px auto 15px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.center{
+  background-color: #8c7458;
+  margin: 10px auto 10px auto;
+  max-width: 500px;
+  padding: 10px;
+}
+
+.form-group{
+  color: #e5d8c9;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  font-size: medium;
+  padding: 10px;
+}
+.form-btn{
+
+  padding: 10px;
 }
