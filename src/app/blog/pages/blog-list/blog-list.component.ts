@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../../models/blog';
 import { BlogService } from '../../services/blog.service';
+import { BookFormComponent } from 'src/app/modules/book/pages/book-form/book-form.component';
+
 
 @Component({
   selector: 'app-blog-list',
@@ -10,24 +12,24 @@ import { BlogService } from '../../services/blog.service';
   providers: [BlogService]
 })
 export class BlogListComponent implements OnInit {
-
   myArrayofBlogs?: Blog[] = [];
-
-
-  constructor(private myBlogService:BlogService,private router:Router) { }
+  blog: BlogService["ArrayOfBlogs"] = [];
+  blogs: Blog|any
+  constructor(
+    private myBlogService:BlogService,
+    private router:Router,
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
     this.myArrayofBlogs = this.myBlogService.showBlogs();
   }
-
-  editBlog(id:number){
-    alert(`Edit: ${id}`);
+  editBlog(id:Blog){
+    alert(`do you want to edit: ${id}?`);
     this.router.navigate(['form/blogs'])
+
   }
 
-  deleteBlog(id:number){
+  deleteBlog(id:Blog){
     alert(`Delete: ${id}`);
   }
-
-
 }
