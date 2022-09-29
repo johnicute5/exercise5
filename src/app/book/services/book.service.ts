@@ -7,7 +7,7 @@ import { Book } from '../models/book';
 
 export class BookService {
 
-  arrayOfBooks:Book[] = [
+  private arrayOfBooks:Book[] = [
 
     {
       id: 10101,

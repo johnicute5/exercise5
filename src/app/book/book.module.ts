@@ -1,27 +1,27 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BookFormComponent } from '../modules/book/pages/book-form/book-form.component';
-import { CommandBarComponent } from '../shared/components/command-bar/command-bar.component';
-import { CommandBarModule } from '../shared/components/command-bar/command-bar.module';
+import { CommonModule } from '@angular/common';
 import { BookRoutingModule } from './book-routing.module';
-import { BookItemComponent } from './components/book-item/book-item.component';
 import { BookListComponent } from './pages/book-list/book-list.component';
+import { BookItemComponent } from './components/book-item/book-item.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import { BookFormComponent } from '../modules/book/pages/book-form/book-form.component';
+
 
 @NgModule({
   declarations: [
     BookListComponent,
     BookItemComponent,
-    BookFormComponent,
-
+    BookFormComponent
   ],
   imports: [
     CommonModule,
-    CommandBarModule,
     BookRoutingModule,
-    ReactiveFormsModule
-  ],
-
+    ReactiveFormsModule,
+    FormsModule,
+    MatIconModule,
+    SharedModule
+  ]
 })
-
 export class BookModule { }

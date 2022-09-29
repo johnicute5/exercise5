@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { BlogModule } from './blog/blog.module';
+import { BookModule } from './book/book.module';
+import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BlogFormComponent } from './modules/blog/pages/blog-form/blog-form.component';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    BlogFormComponent,
-    HeaderComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
-    CommonModule,
+    AppRoutingModule,
+    BookModule,
+    BlogModule,
+    UserModule,
     BrowserAnimationsModule,
+    SharedModule
 
   ],
   providers: [],

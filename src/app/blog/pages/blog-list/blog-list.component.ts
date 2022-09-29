@@ -25,10 +25,9 @@ export class BlogListComponent implements OnInit {
   }
   editBlog(id:Blog){
     alert(`do you want to edit: ${id}?`);
-    this.router.navigate(['form/blogs'])
+    this.router.navigate([`blog/addform`])
 
   }
-
   deleteBlog(id:Blog){
     alert(`Delete: ${id}`);
   }

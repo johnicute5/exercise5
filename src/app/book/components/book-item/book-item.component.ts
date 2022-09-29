@@ -19,7 +19,7 @@ export class BookItemComponent implements OnInit {
   }
 
   sendEdit(){
-    this.router.navigate(['form/blogs'])
+    this.router.navigate([`book/addform/${this.myArrayOfBooks?.id}`])
     this.editBookEmitter.emit(this.myArrayOfBooks?.id);
     console.log("Edit Book: " + this.myArrayOfBooks?.id)
 

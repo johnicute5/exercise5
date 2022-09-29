@@ -4,6 +4,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { FormComponent } from './components/form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SharedModule } from '../shared/shared.module';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
   imports: [
     CommonModule,
     FormsModule,
+    UserRoutingModule,
     MatSlideToggleModule,
     ReactiveFormsModule
   ],

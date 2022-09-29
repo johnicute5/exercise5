@@ -17,6 +17,7 @@ import { BookService } from 'src/app/book/services/book.service';
   styleUrls: ['./book-form.component.scss'],
 })
 export class BookFormComponent implements OnInit {
+
   [x: string]: any;
   bookForm: FormGroup<any>;
   ff: FormArray;
@@ -29,6 +30,7 @@ export class BookFormComponent implements OnInit {
     private route: ActivatedRoute) {
     this.bookID = this.route.snapshot.paramMap.get('id');
     let book = (this.bookService.getBook(Number(this.bookID)))
+
     this.bookForm = fb.group({
       name: [book?.name, [Validators.required]],
       addNewAuthor: fb.array([book?.author]) ,
@@ -36,7 +38,6 @@ export class BookFormComponent implements OnInit {
     });
     this.ff = this.bookForm.get('addNewAuthor') as FormArray;
   }
-
   ngOnInit(): void {
   }
 

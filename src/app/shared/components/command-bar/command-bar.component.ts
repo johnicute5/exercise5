@@ -17,9 +17,9 @@ export class CommandBarComponent implements OnInit {
   add(){
     this.addEmitter.emit(this.route.snapshot.params)
     if (this.router.url.includes('book')) {
-      this.router.navigate(['form/books'])
+      this.router.navigate(['book/addform'])
     } else if (this.router.url.includes('blog')) {
-      this.router.navigate(['form/blogs'])
+      this.router.navigate(['blog/addform'])
     }
   }
   deleteAll(){
