@@ -18,7 +18,6 @@ import { BookService } from 'src/app/book/services/book.service';
 })
 export class BookFormComponent implements OnInit {
 
-  [x: string]: any;
   bookForm: FormGroup<any>;
   ff: FormArray;
   title = "Book Form"
