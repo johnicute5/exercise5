@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -7,25 +7,32 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.scss']
 })
 export class  ProfileComponent implements OnInit {
-
-  profile:FormGroup;
+  profile:FormGroup<any>;
+  title = "Profile Page";
 
   constructor(fb: FormBuilder) {
     this.profile = fb.group({
-      email: [''],
-      name: [''],
-      bio: [''],
+      email: ['',[Validators.required,Validators.email]],
+      name: ['',[Validators.required,Validators.minLength(2)]],
+      bio: ['',[Validators.required,Validators.minLength(20)]],
       active: [false]
     }
 
     )
   }
+  ngOnInit(): void{
 
-  ngOnInit(): void {
   }
-
   submitProfile() {
     console.log(this.profile.value)
   }
+
+  get bio(){
+    return this.profile.get('bio') as FormControl;
+  }
+  get name(){
+    return this.profile.get('name') as FormControl;
+  }
+
 
 }

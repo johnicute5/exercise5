@@ -20,39 +20,28 @@ import { BlogService } from 'src/app/blog/services/blog.service';
 
 })
 export class BlogFormComponent implements OnInit {
-  title = "Blog Form";
-  id:any;
+  Title = "Blog Form";
   blogForm: FormGroup;
   ff: FormArray ;
-  isAddMode: boolean | undefined;
 
 
+  blogID: string | null | any;
+  constructor(private blogService:BlogService ,
+    fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.blogID = this.route.snapshot.paramMap.get('id');
+    let blog = (this.blogService.getBlog(Number(this.blogID)))
 
-
-  constructor(private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private blogService: BlogService) {
     this.blogForm = fb.group({
-      title: ['', [Validators.minLength(2)]],
-      description: ['',[Validators.minLength(20)]],
-      author:['',[Validators.minLength(2)]],
-      addNewComment: fb.array([]),
-
+      title: [blog?.title, [Validators.required]],
+      description: [blog?.description, [Validators.required]],
+      author: [blog?.author, [Validators.required]],
+      addNewComment: fb.array([blog?.comments]) ,
     });
     this.ff = this.blogForm.get('addNewComment') as FormArray;
   }
-
-  ngAfterViewInit(): void {}
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
-    this.blogForm.valueChanges.subscribe((data) => {
-    });
-    if (!this.isAddMode) {
-      this.blogService.getById(this.id)
-      .pipe(first())
-      .subscribe((x: { [key: string]: any; }) => this.blogForm.patchValue(x));
-        }
   }
 
   submitBlog() {
@@ -65,10 +54,6 @@ export class BlogFormComponent implements OnInit {
   reset() {
     this.blogForm.reset();
   }
-
-  markNickName() {
-    this.blogForm.get('title')?.setValue('Blogger Tips 101');
-  }
   addComment() {
     (this.blogForm.get('addNewComment') as FormArray).push(
       new FormControl()
@@ -77,7 +62,7 @@ export class BlogFormComponent implements OnInit {
   deleteComment(id: number) {
     this.ff.removeAt(id);
   }
-  get titles() {
+  get title() {
     return this.blogForm.get('title') as FormControl;
   }
   get description() {

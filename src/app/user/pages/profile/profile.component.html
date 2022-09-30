@@ -1,54 +1,75 @@
-<div class="header">Profile Page</div>
-
+<div class="header">
+  <b>{{ title.toUpperCase() }}</b>
+</div>
 <div class="center">
-  <form [formGroup]="profile" (ngSubmit)="submitProfile()">
-    <div [hidden]="profile.valid" class="form-group">
-      Please fill in required fields *
-    </div>
+  <form [formGroup]="profile">
     <div class="form-group">
+      <div [hidden]="profile.valid" class="form-group">
+        Please fill in required fields *
+      </div>
       <label for="email">Email *</label>
       <input
         type="text"
         formControlName="email"
+        id="email"
         placeholder="Email"
         class="form-control"
         required
         email
       />
     </div>
+
     <div class="form-group">
       <label for="name">Name *</label>
       <input
         type="text"
         formControlName="name"
+        id="name"
         placeholder="Name"
         class="form-control"
         required
+
       />
+      <div [hidden]="bio.valid" class="form-group">
+        name is mininum of 2 characters*
+      </div>
     </div>
     <div class="form-group">
       <label for="bio">Bio</label>
       <textarea
         rows="4"
         cols="50"
+        id="bio"
         formControlName="bio"
         placeholder="Bio"
         class="form-control"
+        required="minLength"
       ></textarea>
+      <div [hidden]="name.valid" class="form-group">
+        bio is mininum of 20 characters*
+      </div>
     </div>
+
+
     <div class="form-group">
       <label for="active">Active</label><br />
       <mat-slide-toggle
         formControlName="active"
         placeholder="Active"
         class="toggle"
+        id="active"
         color="primary"
       >
       </mat-slide-toggle>
     </div>
 
     <div class="form-btn">
-      <button type="submit" [disabled]="profile.invalid" class="btn">
+      <button
+        type="submit"
+        (click)="submitProfile()"
+        [disabled]="profile.invalid"
+        class="btn"
+      >
         Submit
       </button>
     </div>

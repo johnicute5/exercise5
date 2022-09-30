@@ -38,11 +38,10 @@ export class BlogService {
   showBlogs(){
     return this.ArrayOfBlogs;
   }
-  getById(id:any){
-    return id;
-  }
-  update(id:any,myblogs:Blog){
-    return id && myblogs;
+
+  getBlog(id:number):Blog|any{
+    return this.ArrayOfBlogs.find(blog =>blog.id === id);
 
   }
+
 }
