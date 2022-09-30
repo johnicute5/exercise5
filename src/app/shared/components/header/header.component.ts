@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  Title = "Irincode"
+  Title = "Irincode Calling APIs"
   constructor() { }
 
   ngOnInit(): void {
