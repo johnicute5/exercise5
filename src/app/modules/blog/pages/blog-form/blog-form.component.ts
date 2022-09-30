@@ -24,7 +24,6 @@ export class BlogFormComponent implements OnInit {
   blogForm: FormGroup;
   ff: FormArray ;
 
-
   blogID: string | null | any;
   constructor(private blogService:BlogService ,
     fb: FormBuilder,
