@@ -1,43 +1,90 @@
-
-<div class="header"><b *ngIf="isAddMode">Add {{title.toUpperCase()}}</b> </div>
-<div class="header"><b *ngIf="!isAddMode">Edit {{title.toUpperCase()}}</b> </div>
+<div class="header">
+  <b *ngIf="isAddMode">Add {{ title.toUpperCase() }}</b>
+</div>
 <div class="center">
-<form [formGroup]="blogForm">
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input formControlName="title" type="text" id="title" class="form-control" placeholder="Blog Title..." required>
-    <div *ngIf="titles?.errors?.['minlength']" class="alert alert-danger">Minimum Length: 2</div>
-    <div *ngIf="titles?.errors?.['required']" class="alert alert-danger">Blog title is required</div>
-  </div>
-
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input formControlName="description" type="text" id="description" class="form-control" placeholder="Description" required>
-    <div *ngIf="description.errors?.['minlength']" class="alert alert-danger">Minimum Length: 20</div>
-    <div *ngIf="description.errors?.['required']" class="alert alert-danger">Blog description is required</div>
-  </div>
-
-  <div class="form-group">
-    <label for="author">Author</label>
-    <input formControlName="author" type="text" id="author" class="form-control" placeholder="Author" required>
-    <div *ngIf="author.errors?.['minlength']" class="alert alert-danger">Minimum Length: 2</div>
-    <div *ngIf="author.errors?.['required']" class="alert alert-danger">Blog Author is required</div>
-  </div>
-  <label for="addNewComment">Comments</label>
-<div class = "center2">
-<div>
-  <ng-container formArrayName="addNewComment">
-    <div *ngFor="let _ of ff.controls; index as i" class="input-group mb-3">
-      <input [formControlName]="i" class="form-control" placeholder="Comment"/>
-      <button type="button" class="btn btn-danger" (click)="deleteComment(i)">Delete</button>
+  <form [formGroup]="blogForm">
+    <div class="form-group">
+      <div [hidden]="blogForm.valid" class="form-group">
+        Please fill in required fields *
+      </div>
+      <label for="title">Title</label>
+      <input
+        formControlName="title"
+        type="text"
+        id="title"
+        class="form-control"
+        placeholder="Blog Title..."
+        required
+      />
     </div>
-    <button class="btn btn-info" (click)="addComment()">Add Comment</button>
-  </ng-container>
-</div>
-<button type="submit" (click)="reset()"  class="btn btn-success">Clear Form</button>
-  <button type="submit" (click)="submitBlog()" [disabled]="blogForm.invalid" class="btn btn-success">Submit</button>
-  <!-- <button type="button"  class="btn btn-info" (click)="reset()">Reset</button>
-  <button type="button"  class="btn btn-info" (click)="markNickName()">Reset Nickname</button> -->
-</div>
-</form>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        formControlName="description"
+        type="text"
+        id="description"
+        class="form-control"
+        placeholder="Description"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input
+        formControlName="author"
+        type="text"
+        id="author"
+        class="form-control"
+        placeholder="Author"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <ng-container formArrayName="addNewComment">
+        <label for="addNewComment">Comments</label>
+        <div *ngFor="let _ of ff.controls; index as i" class="input-group mb-3">
+          <input
+            [formControlName]="i"
+            class="form-control"
+            style="height: 40px"
+            placeholder="Comment {{ i + 1 }}"
+            required
+          />
+          <button
+            type="button"
+            class="btn"
+            style="height: 40px"
+            (click)="deleteComment(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button class="btn" (click)="addComment()">
+            <mat-icon>add_comment</mat-icon> Add Comment
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-btn">
+      <button
+        type="submit"
+        style="margin-right: 10px"
+        (click)="reset()"
+        class="btn btn-success"
+      >
+        Clear Form
+      </button>
+      <button
+        type="submit"
+        style="margin-right: 10px; width: 100px"
+        (click)="submitBlog()"
+        [disabled]="blogForm.invalid"
+        class="btn btn-success"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
 </div>

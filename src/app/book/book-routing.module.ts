@@ -13,7 +13,7 @@ const routes: Routes = [
     component: BookFormComponent
   },
   {
-    path: `book/addform/10101`,
+    path: `book/addform/:$id`,
     component: BookFormComponent
   }
 ];

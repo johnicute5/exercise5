@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'blog/addform',
     component: BlogFormComponent
+  },
+  {
+    path: 'blog/addform/:id',
+    component: BlogFormComponent
   }
 ];
 
