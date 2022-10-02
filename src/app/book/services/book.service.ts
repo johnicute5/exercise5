@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable, map, filter, Subject, ReplaySubject, BehaviorSubject, throwError } from 'rxjs'
+import { environment } from 'src/environments/environment';
 import { Book } from '../models/book';
 
 @Injectable({
@@ -8,23 +9,25 @@ import { Book } from '../models/book';
 })
 
 export class BookService {
-
-  private arrayOfBooksUrl = 'http://localhost:3000/books';
-  httpClient: any;
-  constructor(private http:HttpClient) {
-
-
-  }
+  subject = new Subject();
+  replay = new ReplaySubject(10);
+  behavior = new BehaviorSubject("Jerome");
+  constructor(private http:HttpClient) {}
   private handleError(error: any) {
     console.log(error);
     return throwError(error);
   }
-
+//Get Book Api
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.arrayOfBooksUrl).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
+    return this.http.get<Book[]>(`${environment.url}/books`).pipe<Book[]>(
+      map((data: Book[]) => {
+        for(let a of data) {
+
+        }
+        return data
+      }
+      )
+    )
   }
 
 
