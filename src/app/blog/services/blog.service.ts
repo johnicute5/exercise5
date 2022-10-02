@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Blog } from '../models/blog';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Blog } from '../models/blog';
 export class BlogService {
 
 
-  private ArrayOfBlogsUrl= 'http://localhost:3000/blogs';
+
   httpClient: any;
   constructor(private http:HttpClient) {
 
@@ -21,35 +22,16 @@ export class BlogService {
   }
 
   getBlogs(): Observable<Blog[]> {
-    return this.http.get<Blog[]>(this.ArrayOfBlogsUrl).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
+    return this.http.get<Blog[]>(`${environment.url}/blogs`).pipe<Blog[]>(
+      map((data: Blog[]) => {
+        for(let a of data) {
+
+        }
+        return data
+      }
+      )
+    )
   }
-  public getPostById() {
-    let id: number = 1;
-    let endPoints = "/posts/" + id;
-    this.httpClient.get(this.ArrayOfBlogsUrl + endPoints).subscribe((data: any) => {
-      console.log(data);
-    });
-  }
-  public addPost(postData: Object) {
-    let endPoints = "/posts"
-    this.httpClient.post(this.ArrayOfBlogsUrl + endPoints, postData).subscribe((data: any) => {
-      console.log(data);
-    });
-  }
-  public updatePost(postData: Object) {
-    let endPoints = "/posts/1"
-    this.httpClient.put(this.ArrayOfBlogsUrl + endPoints, postData).subscribe((data: any) => {
-      console.log(data);
-    });
-  }
-  public deletePost() {
-    let endPoints = "/posts/1"
-    this.httpClient.delete(this.ArrayOfBlogsUrl+ endPoints).subscribe((data: any) => {
-      console.log(data);
-    });
-  }
+
 
 }
