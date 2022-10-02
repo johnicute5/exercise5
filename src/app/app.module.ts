@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BlogModule,
     UserModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
 
   ],
   providers: [],

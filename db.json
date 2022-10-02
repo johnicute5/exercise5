@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "blogs": [
+    {
+      "id": 101691,
+      "title": "Why X People Do X",
+      "description": " The x serves as a catch-all device, telling your reader that all is well in your relationship.",
+      "author": "Author X",
+      "comments": ["Comment X1", "Comment X2", "Comment X3"]
+    },
+
+    {
+      "id": 101692,
+      "title": "Experience Has Taught Me Well",
+      "description": "Everything you experience can be used to grow something fruitful in the future if you put it in the right bin.",
+      "author": "Master of Experiences",
+      "comments": ["Comment E1", "Comment E2", "Comment E3"]
+    },
+
+    {
+      "id": 101693,
+      "title": "What We Do When...",
+      "description": "what we do when the sky is falling down",
+      "author": "Sky Sumalangit",
+      "comments": ["Comment EARTH", "Comment FIRE", "Comment AIR","Comment WATER"]
+    }
+
+  ],
+  "books": [
+    {
+      "id": 10101,
+      "name": "Smarty Pants",
+      "author": ["The Engraved Scripture", "Wordy Memo", "White Collar Co."],
+      "isbn": "8147852369"
+    },
+
+    {
+      "id": 10102,
+      "name": "Witty Whitman",
+      "author": ["The Witty Writer", "Director-E", "Author F"],
+      "isbn": "1344457369"
+    },
+
+    {
+      "id": 10103,
+      "name": "Coffee, Books and Me",
+      "author": ["The InkPot", "Ancient Leger", "The Write Ability"],
+      "isbn": "1234554321"
+    },
+    {
+      "id": 10104,
+      "name": "Book of Wisdom",
+      "author": ["Thaughty Guy", "warfreak writer", "inkless Ballpen"],
+      "isbn": "12345512331"
+    }
+  ]
+}

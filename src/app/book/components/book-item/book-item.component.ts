@@ -19,6 +19,7 @@ export class BookItemComponent implements OnInit {
   }
 
   sendEdit(){
+    alert(`do you want to edit: ${this.myArrayOfBooks?.id}?`);
     this.router.navigate([`book/addform/${this.myArrayOfBooks?.id}`])
     this.editBookEmitter.emit(this.myArrayOfBooks?.id);
     console.log("Edit Book: " + this.myArrayOfBooks?.id)
@@ -28,7 +29,7 @@ export class BookItemComponent implements OnInit {
   sendDelete(){
     console.log("Delete Book: " + this.myArrayOfBooks?.id)
     this.deleteBookEmitter.emit(this.myArrayOfBooks?.id)
-    this.router.navigate(['book/form'])
+    this.router.navigate(['book'])
   }
 
 }

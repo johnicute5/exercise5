@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Blog } from '../models/blog';
 
 @Injectable({
@@ -7,41 +9,47 @@ import { Blog } from '../models/blog';
 export class BlogService {
 
 
-  ArrayOfBlogs:Blog[] = [
-    {
-      id: 101691,
-      title: "Why X People Do X",
-      description: " The x serves as a catch-all device, telling your reader that all is well in your relationship.",
-      author: "Author X",
-      comments: ["Comment X1", "Comment X2", "Comment X3"]
-    },
+  private ArrayOfBlogsUrl= 'http://localhost:3000/blogs';
+  httpClient: any;
+  constructor(private http:HttpClient) {
 
-    {
-      id: 101692,
-      title: "Experience Has Taught Me Well",
-      description: "Everything you experience can be used to grow something fruitful in the future if you put it in the right bin.",
-      author: "Master of Experiences",
-      comments: ["Comment E1", "Comment E2", "Comment E3"]
-    },
 
-    {
-      id: 101693,
-      title: "What We Do When...",
-      description: "what we do when the sky is falling down",
-      author: "Sky Sumalangit",
-      comments: ["Comment EARTH", "Comment FIRE", "Comment AIR","Comment WATER"]
-    }
-  ];
-
-  constructor() { }
-
-  showBlogs(){
-    return this.ArrayOfBlogs;
+  }
+  private handleError(error: any) {
+    console.log(error);
+    return throwError(error);
   }
 
-  getBlog(id:number):Blog|any{
-    return this.ArrayOfBlogs.find(blog =>blog.id === id);
-
+  getBlogs(): Observable<Blog[]> {
+    return this.http.get<Blog[]>(this.ArrayOfBlogsUrl).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+  public getPostById() {
+    let id: number = 1;
+    let endPoints = "/posts/" + id;
+    this.httpClient.get(this.ArrayOfBlogsUrl + endPoints).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+  public addPost(postData: Object) {
+    let endPoints = "/posts"
+    this.httpClient.post(this.ArrayOfBlogsUrl + endPoints, postData).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+  public updatePost(postData: Object) {
+    let endPoints = "/posts/1"
+    this.httpClient.put(this.ArrayOfBlogsUrl + endPoints, postData).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+  public deletePost() {
+    let endPoints = "/posts/1"
+    this.httpClient.delete(this.ArrayOfBlogsUrl+ endPoints).subscribe((data: any) => {
+      console.log(data);
+    });
   }
 
 }

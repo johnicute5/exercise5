@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Book } from '../models/book';
 
 @Injectable({
@@ -7,36 +9,31 @@ import { Book } from '../models/book';
 
 export class BookService {
 
-  private arrayOfBooks:Book[] = [
+  private arrayOfBooksUrl = 'http://localhost:3000/books';
+  httpClient: any;
+  constructor(private http:HttpClient) {
 
-    {
-      id: 10101,
-      name: "Smarty Pants",
-      author: ["The Engraved Scripture", "Wordy Memo", "White Collar Co."],
-      isbn: "8147852369"
-    },
-
-    {
-      id: 10102,
-      name: "Witty Whitman",
-      author: ["The Witty Writer", "Director-E", "Author F"],
-      isbn: "1344457369"
-    },
-
-    {
-      id: 10103,
-      name: "Coffee, Books and Me",
-      author: ["The InkPot", "Ancient Leger", "The Write Ability"],
-      isbn: "1234554321"
-    }
-
-  ];
-  constructor() { }
-  showBooks() {
-    return this.arrayOfBooks;
-  }
-  getBook(id:number):Book|any{
-    return this.arrayOfBooks.find(book =>book.id === id);
 
   }
+  private handleError(error: any) {
+    console.log(error);
+    return throwError(error);
+  }
+
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.arrayOfBooksUrl).pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
+
+
+  // showBooks() {
+  //   return this.arrayOfBooks;
+  // }
+  // getBook(id:number):Book|any{
+  //   return this.arrayOfBooks.find(book =>book.id === id);
+
+  // }
 }

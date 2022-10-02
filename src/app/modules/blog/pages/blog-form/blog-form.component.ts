@@ -30,13 +30,13 @@ export class BlogFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     this.blogID = this.route.snapshot.paramMap.get('id');
-    let blog = (this.blogService.getBlog(Number(this.blogID)))
+    let blog = (this.blogService.getBlogs());
 
     this.blogForm = fb.group({
-      title: [blog?.title, [Validators.required]],
-      description: [blog?.description, [Validators.required]],
-      author: [blog?.author, [Validators.required]],
-      addNewComment: fb.array([blog?.comments]) ,
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      author: ['', [Validators.required]],
+      addNewComment: fb.array(['']) ,
     });
     this.ff = this.blogForm.get('addNewComment') as FormArray;
   }

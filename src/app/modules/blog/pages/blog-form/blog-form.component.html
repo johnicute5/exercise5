@@ -1,8 +1,8 @@
 <div class="header">
   <b>{{ Title.toUpperCase() }}</b>
 </div>
-<div class="center">
   <form [formGroup]="blogForm">
+    <div class="center">
     <div class="form-group">
       <div [hidden]="blogForm.valid" class="form-group">
         Please fill in required fields *
@@ -60,11 +60,11 @@
             <mat-icon>delete</mat-icon>
           </button>
         </div>
-        <div>
+
           <button class="btn" (click)="addComment()">
-            <mat-icon>add_comment</mat-icon> Add Comment
+            <mat-icon style="padding-top: 4px;">add_comment</mat-icon> Add Comment
           </button>
-        </div>
+
       </ng-container>
     </div>
     <div class="form-btn">
@@ -86,5 +86,10 @@
         Submit
       </button>
     </div>
+  </div>
   </form>
+
+<div>
+<br/>
+<br/>
 </div>

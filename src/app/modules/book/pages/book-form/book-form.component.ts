@@ -28,12 +28,12 @@ export class BookFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
     this.bookID = this.route.snapshot.paramMap.get('id');
-    let book = (this.bookService.getBook(Number(this.bookID)))
+    let book = (this.bookService.getBooks())
 
     this.bookForm = fb.group({
-      name: [book?.name, [Validators.required]],
-      addNewAuthor: fb.array([book?.author]) ,
-      isbn: [book?.isbn, [Validators.required]],
+      name: ['', [Validators.required]],
+      addNewAuthor: fb.array(['']) ,
+      isbn: ['', [Validators.required]],
     });
     this.ff = this.bookForm.get('addNewAuthor') as FormArray;
   }

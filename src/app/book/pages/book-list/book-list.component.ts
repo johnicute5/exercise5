@@ -9,14 +9,17 @@ import { Router } from '@angular/router';
   providers: [BookService]
 })
 export class BookListComponent implements OnInit {
+  myArrayofBooks: Book[] = [];
+  blogs: Book|any;
 
-  arrayOfBooks?:Book[] = [];
-
-  constructor(private myBookServices:BookService,private router:Router) { }
-
-  ngOnInit(): void {
-    this.arrayOfBooks = this.myBookServices.showBooks();
+  constructor(private myBookService:BookService) { }
+    getBooks(){
+    this.myBookService.getBooks().subscribe(data => {
+      this.myArrayofBooks=data;
+    });
   }
-
+  ngOnInit(): void {
+   this.getBooks();
+  }
 }
 

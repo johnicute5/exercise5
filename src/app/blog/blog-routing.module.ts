@@ -14,7 +14,7 @@ const routes: Routes = [
     component: BlogFormComponent
   },
   {
-    path: 'blog/addform/:id',
+    path: 'blog/addform/:$id',
     component: BlogFormComponent
   }
 ];
