@@ -36,25 +36,25 @@ export class BlogFormComponent implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       author: ['', [Validators.required]],
-      addNewComment: fb.array(['']) ,
+      comments: fb.array(['']) ,
     });
-    this.ff = this.blogForm.get('addNewComment') as FormArray;
+    this.ff = this.blogForm.get('comments') as FormArray;
   }
   ngOnInit(): void {
   }
 
   submitBlog() {
     alert(`Blog Succesfuly Save!`);
-    console.log(this.blogForm.get('title')?.errors);
+    this.blogService.addBlogs(this.blogForm.value)
     console.log(this.blogForm.value)
-    this.reset();
+    window.location.href = "/blog";
 
   }
   reset() {
     this.blogForm.reset();
   }
   addComment() {
-    (this.blogForm.get('addNewComment') as FormArray).push(
+    (this.blogForm.get('comments') as FormArray).push(
       new FormControl()
     );
   }

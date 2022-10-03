@@ -32,6 +32,10 @@ export class BlogService {
       )
     )
   }
+  addBlogs(blogs:Blog){
+    return this.http.post(`${environment.url}/blogs`, blogs).subscribe()
+
+  }
 
 
 }

@@ -29,7 +29,16 @@ export class BookService {
       )
     )
   }
+  addBooks(books:Book){
+    return this.http.post(`${environment.url}/books`, books).subscribe()
 
+  }
+  updateBooks(books:Book) {
+    return this.http.put(`${environment.url}/books/${books.id}`, books).subscribe()
+  }
+  deleteBooks(id:number) {
+    return this.http.delete(`${environment.url}/Books/${id}`).subscribe()
+  }
 
 
   // showBooks() {

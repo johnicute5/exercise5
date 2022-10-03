@@ -41,8 +41,8 @@
       />
     </div>
     <div class="form-group">
-      <ng-container formArrayName="addNewComment">
-        <label for="addNewComment">Comments</label>
+      <ng-container formArrayName="comments">
+        <label for="comments">Comments</label>
         <div *ngFor="let _ of ff.controls; index as i" class="input-group mb-3">
           <input
             [formControlName]="i"

@@ -6,20 +6,20 @@ import { Router } from '@angular/router';
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
-  providers: [BookService]
+  providers: [BookService],
 })
 export class BookListComponent implements OnInit {
   myArrayofBooks: Book[] = [];
-  blogs: Book|any;
+  blogs: Book | any;
 
-  constructor(private myBookService:BookService) { }
-    getBooks(){
-    this.myBookService.getBooks().subscribe(data => {
-      this.myArrayofBooks=data;
+  constructor(private myBookService: BookService) {}
+
+  getBooks() {
+    this.myBookService.getBooks().subscribe((data) => {
+      this.myArrayofBooks = data;
     });
   }
   ngOnInit(): void {
-   this.getBooks();
+    this.getBooks();
   }
 }
-

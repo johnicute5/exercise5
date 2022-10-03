@@ -22,29 +22,34 @@ export class BookFormComponent implements OnInit {
   title = "Add Book Form"
 
   bookID: string | null | any;
+  sub:Subscription| undefined;
 
   constructor(private bookService:BookService ,
     fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute) {
     this.bookID = this.route.snapshot.paramMap.get('id');
-    let book = (this.bookService.getBooks())
 
     this.bookForm = fb.group({
       name: ['', [Validators.required]],
-      addNewAuthor: fb.array(['']) ,
+      author: fb.array(['']) ,
       isbn: ['', [Validators.required]],
     });
-    this.ff = this.bookForm.get('addNewAuthor') as FormArray;
+    this.ff = this.bookForm.get('author') as FormArray;
   }
   ngOnInit(): void {
+    this.sub?.unsubscribe();
   }
 
-  submitBook() {
+  submitBook() : void{
     alert("Book succesfuly saved!");
-    console.log(this.bookForm.get('name')?.errors);
-    console.log(this.bookForm.value);
-    window.location.href = "/book";
+    console.log(this.bookForm.value)
+    this.bookService.addBooks(this.bookForm.value)
+     window.location.href = "/book";
+  }
+  editBooks(): void{
+    alert("Book succesfuly updated!");
+    this.bookService.updateBooks(this.bookForm.value)
   }
 
   reset() {
@@ -52,7 +57,7 @@ export class BookFormComponent implements OnInit {
   }
 
   addAuthor() {
-    (this.bookForm.get('addNewAuthor') as FormArray).push(new FormControl());
+    (this.bookForm.get('author') as FormArray).push(new FormControl());
   }
 
   deleteAuthor(id: number) {
