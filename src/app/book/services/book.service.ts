@@ -22,6 +22,16 @@ export class BookService {
     return this.http.get<Book[]>(`${environment.url}/books`).pipe<Book[]>(
       map((data: Book[]) => {
         for(let a of data) {
+<<<<<<< HEAD
+=======
+
+        }
+        return data
+      }
+      )
+    )
+  }
+>>>>>>> 89d39bc46d1180a74479c7f3f1fb2ba2da1ce8ba
 
         }
         return data
